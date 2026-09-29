@@ -1,5 +1,9 @@
 import admin from "firebase-admin";
 import { readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const BACKEND_DIR = fileURLToPath(new URL("..", import.meta.url));
 
 // The WhatsApp service has its own named database, "whatsappjenishbhai", in the same
 // Firebase project as the billing app but apart from the billing app's own
@@ -29,7 +33,8 @@ export function getDb() {
     // it onto one line. Hosts should keep using the variable above.
     if (!raw && process.env.FIREBASE_SERVICE_ACCOUNT_PATH) {
       try {
-        raw = readFileSync(process.env.FIREBASE_SERVICE_ACCOUNT_PATH, "utf8");
+        // Relative to the backend folder, not wherever the server was started from.
+        raw = readFileSync(path.resolve(BACKEND_DIR, process.env.FIREBASE_SERVICE_ACCOUNT_PATH), "utf8");
       } catch (err) {
         throw new Error(
           `FIREBASE_SERVICE_ACCOUNT_PATH points at a file that cannot be read (${err.message})`,
