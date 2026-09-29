@@ -34,17 +34,17 @@ export const STARTER_TEMPLATES = [
   {
     name: "New arrivals",
     message:
-      "{Hello|Hi|Dear} {{first_name|Sir/Madam}},\n\nOur *new collection* of certified diamond jewellery is ready. Fresh designs in rings, earrings and bracelets — with GIA / IGI certified stones.\n\nReply *YES* and we will share the full catalogue with prices.\n\n— {{business_name}}",
+      "{Hello|Hi|Dear} {{first_name|Sir/Madam}},\n\nOur *new range* of IBELL mobiles and accessories is ready — fresh smartphones, feature phones, earphones and chargers.\n\nReply *YES* and we will share the full catalogue with dealer prices.\n\n— {{business_name}}",
   },
   {
     name: "Price list follow-up",
     message:
-      "{Hello|Hi} {{first_name|there}},\n\nSharing our latest price list for {{company|your business}}. Special B2B rates apply on orders placed this week.\n\nLet us know which pieces interest you and we will send details and videos.",
+      "{Hello|Hi} {{first_name|there}},\n\nSharing our latest price list for {{company|your business}}. Special B2B rates apply on orders placed this week.\n\nLet us know which models interest you and we will send details and videos.",
   },
   {
     name: "Trade show invite",
     message:
-      "Dear {{first_name|Sir/Madam}},\n\nWe will be at the upcoming jewellery show. We would love to meet you and show the new collection in person.\n\nReply with a convenient time and we will book a slot for you.\n\n— {{business_name}}",
+      "Dear {{first_name|Sir/Madam}},\n\nWe will be at the upcoming mobile & electronics trade show. We would love to meet you and show the new range in person.\n\nReply with a convenient time and we will book a slot for you.\n\n— {{business_name}}",
   },
 ];
 

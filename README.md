@@ -1,6 +1,6 @@
-# Starlink WhatsApp — backend
+# IBELL MOBILE WhatsApp — backend
 
-The API behind the Starlink Jewels WhatsApp web app (see `../WPfrontend`), and
+The API behind the IBELL MOBILE WhatsApp web app (see `../WPfrontend`), and
 the WhatsApp bridge the AIM billing app already uses. One process, one business
 number, linked by QR the same way WhatsApp Web is.
 
@@ -124,7 +124,7 @@ one session stop messages being delivered).
 |---|---|---|
 | `ADMIN_PASSWORD` | yes | Password for signing in to the web app. Changing it signs everyone out. |
 | `API_KEY` | for AIM | Shared secret for server-to-server calls. Must equal the AIM app's `WHATSAPP_SERVICE_API_KEY`. |
-| `FRONTEND_ORIGIN` | yes | The web app's address(es), comma-separated, e.g. `https://starlink-wa.vercel.app`. `https://*.vercel.app` allows preview deployments. |
+| `FRONTEND_ORIGIN` | yes | The web app's address(es), comma-separated, e.g. `https://ibell-wa.vercel.app`. `https://*.vercel.app` allows preview deployments. |
 | `DATA_STORE` | no | `local` (default — JSON files in `DATA_DIR`) or `firestore`. **Use `firestore` on Render.** |
 | `DATA_DIR` | no | Folder for local data. Default `./data` (`./data-demo` in demo mode). |
 | `FIREBASE_SERVICE_ACCOUNT_KEY` | yes* | The service-account JSON on one line. *Or* `FIREBASE_SERVICE_ACCOUNT_PATH` pointing at the file (handy locally). |
@@ -139,7 +139,7 @@ tests need nothing.
 
 All app collections in Firestore start with `wa` (`waContacts`,
 `waCampaigns`, …) and live in their own database, `wpserver`, separate from the
-billing app's `starlinkbilling`. The prefix is kept anyway, so pointing
+billing app's own database. The prefix is kept anyway, so pointing
 `FIRESTORE_DATABASE_ID` at a shared database can never collide with collections
 such as `settings`.
 

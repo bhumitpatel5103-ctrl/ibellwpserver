@@ -191,7 +191,7 @@ app.get("/", (req, res, next) => {
 /* Without a key, "/" just says what this is. The web app lives on its own
    host (see WPfrontend); this service is its API. */
 app.get("/", (_req, res) =>
-  res.type("text").send("Starlink WhatsApp API is running. Open the web app to use it."),
+  res.type("text").send("IBELL MOBILE WhatsApp API is running. Open the web app to use it."),
 );
 
 /* ── Start ───────────────────────────────────────────────────────────────

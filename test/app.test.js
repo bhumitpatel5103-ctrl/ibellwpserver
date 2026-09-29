@@ -55,9 +55,9 @@ function assert(ok, what) {
 
 /* ══════ One message, read by each client as their own ═══════════════════ */
 {
-  const vars = varsForContact({ name: "Mr. Arjun Shah", company: "Shah Gems", fields: { "Budget (USD)": "$200k" } }, { business_name: "Starlink" });
+  const vars = varsForContact({ name: "Mr. Arjun Shah", company: "Shah Mobiles", fields: { "Budget (USD)": "$200k" } }, { business_name: "IBELL MOBILE" });
   assert(renderMessage("Dear {{first_name}}", vars) === "Dear Arjun", "a title is not mistaken for a first name");
-  assert(renderMessage("{{Budget (USD)}} for {{company}}", vars) === "$200k for Shah Gems", "any Excel column is a variable");
+  assert(renderMessage("{{Budget (USD)}} for {{company}}", vars) === "$200k for Shah Mobiles", "any Excel column is a variable");
   assert(renderMessage("Hi {{city|there}}", vars) === "Hi there", "a fallback fills a blank");
   assert(renderMessage("Dear {{city}}, hello", vars) === "Dear, hello", "and without one the gap is tidied, not left as 'Dear ,'");
   assert(renderMessage("{A|B|C}", {}, { random: () => 0.99 }) === "C", "random words pick one option");
@@ -263,8 +263,8 @@ async function drain(id, max = 50) {
   const res = { headers: {}, set(h) { Object.assign(this.headers, h); }, sendStatus(c) { this.code = c; } };
   process.env.FRONTEND_ORIGIN = "https://*.vercel.app,http://localhost:5173";
   const req = (origin) => ({ method: "OPTIONS", get: (h) => (h === "origin" ? origin : undefined) });
-  auth.cors(req("https://starlink-wa.vercel.app"), res, () => {});
-  assert(res.code === 204 && res.headers["Access-Control-Allow-Origin"] === "https://starlink-wa.vercel.app", "the Vercel site may call the API");
+  auth.cors(req("https://ibell-wa.vercel.app"), res, () => {});
+  assert(res.code === 204 && res.headers["Access-Control-Allow-Origin"] === "https://ibell-wa.vercel.app", "the Vercel site may call the API");
   const res2 = { headers: {}, set(h) { Object.assign(this.headers, h); }, sendStatus(c) { this.code = c; } };
   auth.cors(req("https://evil.example.com"), res2, () => {});
   assert(res2.code === 403 && !res2.headers["Access-Control-Allow-Origin"], "another site may not");
@@ -278,7 +278,7 @@ async function drain(id, max = 50) {
   const dir = mkdtempSync(path.join(tmpdir(), "sl-store-"));
   const a = createLocalFileStore(dir);
   await a.setDoc("waContacts/1", { name: "One" });
-  await a.setDoc("waMedia/m1/chunks/0", { data: Buffer.from("diamond") });
+  await a.setDoc("waMedia/m1/chunks/0", { data: Buffer.from("handset") });
   await a.setDoc("waCampaigns/c1/chunks/0", { items: [{ p: "1", s: "sent" }] });
   a.flush();
   const files = readdirSync(dir).sort();
@@ -286,7 +286,7 @@ async function drain(id, max = 50) {
   const b = createLocalFileStore(dir);
   assert((await b.getDoc("waContacts/1"))?.name === "One", "and read back after a restart");
   const media = await b.getDoc("waMedia/m1/chunks/0");
-  assert(Buffer.from(media.data).toString() === "diamond", "attachments come back byte for byte");
+  assert(Buffer.from(media.data).toString() === "handset", "attachments come back byte for byte");
   assert((await b.list("waContacts")).length === 1, "lists work on reloaded data");
   await b.deleteDoc("waContacts/1");
   b.flush();
@@ -517,7 +517,7 @@ async function drain(id, max = 50) {
   const done = await drain(c.id);
   assert(done.status === "completed" && done.stats.sent === 2, "the broadcast posts once into each group — " + JSON.stringify(done.stats));
   const { items } = await R.getRecipients(c.id);
-  assert(items.every((r) => r.isGroup) && items.some((r) => r.name === "Dubai Diamond Buyers"), "the campaign page lists the groups by name");
+  assert(items.every((r) => r.isGroup) && items.some((r) => r.name === "Dubai Mobile Traders"), "the campaign page lists the groups by name");
   assert(groups.get(dubai).lastPostAt > 0, "each group remembers when it was last posted to");
   assert(!contacts.has("120363041111111111"), "posting to a group never creates a fake client");
 
@@ -530,7 +530,7 @@ async function drain(id, max = 50) {
   assert(again.added === 0, "importing twice adds nobody twice");
 
   // Status.
-  const post = await postToStatus({ text: "New bridal collection is live ✨", audience: { mode: "all" } });
+  const post = await postToStatus({ text: "New smartphone range is live ✨", audience: { mode: "all" } });
   assert(post.viewers > 0 && post.kind === "text", "a status is posted to clients on WhatsApp");
   await assertRejects(() => postToStatus({ text: "", audience: { mode: "all" } }), "BAD_REQUEST", "an empty status is refused");
 }
@@ -577,7 +577,7 @@ async function drain(id, max = 50) {
   const { quickRead, leadBoard, setLead } = await import("../src/engine/leads.js");
   const { conversations } = await import("../src/data/collections.js");
   const lv = (t) => quickRead(t).level;
-  assert(lv("What is your best price for 20 pcs 1ct GIA ovals?") === "hot" && quickRead("What is your best price?").intent === "price", "a price question is a hot lead");
+  assert(lv("What is your best price for 200 pcs of the 5G model?") === "hot" && quickRead("What is your best price?").intent === "price", "a price question is a hot lead");
   assert(lv("Yes please send") === "hot" && lv("Please share the catalogue") === "hot" && lv("Do you have 2ct in stock?") === "hot", "yes, catalogue and stock questions are hot");
   assert(lv("We want to confirm the order") === "hot" && quickRead("We want to confirm the order").intent === "order", "an order is hot, as an order");
   assert(lv("Not interested, thanks") === "cold" && lv("maybe later") === "cold", "not interested is cold");

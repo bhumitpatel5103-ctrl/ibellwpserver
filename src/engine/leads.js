@@ -6,7 +6,7 @@
  *   cold   not interested, not now
  *   none   "ok", "thanks", 👍 — nothing to act on
  *
- * with a one-line note of what they want ("Price for 20 pcs 1ct+ GIA ovals").
+ * with a one-line note of what they want ("Price for 200 pcs 5G, 128GB").
  * A buyer who asks for a price and waits a day buys from someone else; this is
  * what puts that message at the top of the list instead of under forty "thanks".
  *
@@ -26,8 +26,8 @@ const RULES = [
   // Order before price: "confirm the order at this price" is an order.
   ["hot", "order", /\b(order|purchase|buy|booking|book it|confirm(ed)?|proceed|invoice|proforma|payment|advance|p\.?o\.?)\b|اطلب|订单|下单/i],
   ["cold", "not_interested", /\b(not interested|no thanks|no thank you|not now|maybe later|next time|don'?t (need|want|send)|no need|not required|already have|busy right now)\b/i],
-  ["hot", "price", /\b(price|prices|pricing|rate|rates|quote|quotation|cost|how much|best price|discount|moq|per ct|per carat|\$\/ct)\b|سعر|الأسعار|价格|多少钱|报价/i],
-  ["hot", "stock", /\b(available|availability|in stock|stock|ready stock|pcs|pieces|qty|quantity|\d+(\.\d+)?\s?(ct|cts|carat|carats)|vvs\d?|vs\d|gia|igi|hrd|solitaires?|parcels?)\b/i],
+  ["hot", "price", /\b(price|prices|pricing|rate|rates|quote|quotation|cost|how much|best price|discount|moq|per unit|per piece|dealer price)\b|سعر|الأسعار|价格|多少钱|报价/i],
+  ["hot", "stock", /\b(available|availability|in stock|stock|ready stock|pcs|pieces|qty|quantity|units?|models?|variants?|\d+\s?(gb|tb)|[45]g|imei|cartons?|boxes)\b/i],
   ["hot", "catalogue", /\b(catalog(ue)?|brochure|photos?|pics?|pictures?|images?|videos?|price list|designs?|samples?|send (me|us|details)|share (details|more))\b|كتالوج|目录/i],
   ["hot", "meeting", /\b(meet|meeting|visit|booth|stand|appointment|showroom|call me|video call|zoom|come to)\b/i],
   ["hot", "order", /^(yes|yes please|yes pls|yeah|yep|sure|interested|i am interested|i'?m interested|please send|pls send|send|ok send|haan|ji)\b/i],

@@ -1,8 +1,8 @@
 {
-  "name": "wpsendmassage",
+  "name": "ibell-whatsapp-backend",
   "version": "1.0.0",
   "private": true,
-  "description": "WhatsApp B2B campaign service for Starlink Jewels — clients, Excel import, scheduled personalised campaigns, inbox (Baileys, own-number QR link)",
+  "description": "WhatsApp B2B campaign service for IBELL MOBILE — clients, Excel import, scheduled personalised campaigns, inbox (Baileys, own-number QR link)",
   "main": "src/server.js",
   "type": "module",
   "scripts": {

@@ -7,7 +7,7 @@
  * "971501234567" with no plus, two numbers in one cell, and the one Excel does
  * to all of them if the column is not Text: 9.71501E+11. Every one of those
  * has to become either a number or a sentence saying why not, because a wrong
- * guess sends a diamond price list to a stranger.
+ * guess sends a dealer price list to a stranger.
  *
  * The result's `phone` is digits only, country code first, no plus — the
  * form WhatsApp addresses people by, and the id a contact is stored under.

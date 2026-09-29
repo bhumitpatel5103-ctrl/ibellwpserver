@@ -1,6 +1,6 @@
 /**
- * Posting to WhatsApp Status — the 24-hour stories jewellers use to show new
- * pieces.
+ * Posting to WhatsApp Status — the 24-hour stories dealers use to show new
+ * models.
  *
  * A status goes to a list of people the app names: the clients on WhatsApp
  * (all, or some tags), opted-out clients never included. WhatsApp then shows

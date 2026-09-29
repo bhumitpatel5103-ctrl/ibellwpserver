@@ -131,7 +131,7 @@ export function requireUser(req, res, next) {
  * Cross-origin access for the web app on its own domain.
  *
  * FRONTEND_ORIGIN lists the sites allowed to call this API, comma-separated
- * (https://starlink-wa.vercel.app,http://localhost:5173). An entry may use one
+ * (https://ibell-wa.vercel.app,http://localhost:5173). An entry may use one
  * leading wildcard for Vercel's preview deployments: https://*.vercel.app.
  * Anything not listed gets no CORS headers, and the browser blocks it.
  */

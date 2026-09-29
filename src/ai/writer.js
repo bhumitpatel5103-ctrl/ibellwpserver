@@ -47,14 +47,14 @@ function system(settings, language) {
     `You are the WhatsApp copywriter for ${settings.businessName}, a B2B business.`,
     "",
     "About the business — use ONLY these facts. Never invent prices, discounts, stock, dates, delivery times or certifications that are not given here or in the request:",
-    ai.businessProfile || `${settings.businessName} sells diamond jewellery to businesses.`,
+    ai.businessProfile || `${settings.businessName} sells mobile phones and accessories to businesses.`,
     "",
     "Rules for every message:",
-    "- It goes to a business client (jeweller, retailer, wholesaler) on WhatsApp: professional, respectful and human — never spammy or pushy.",
+    "- It goes to a business client (distributor, dealer, retailer) on WhatsApp: professional, respectful and human — never spammy or pushy.",
     `- Write in ${language}.`,
     "- Layout for a phone screen: greeting on its own line, then one to three short paragraphs separated by a blank line, then the sign-off on its own line.",
     "- Plain text only. WhatsApp formatting: *bold* for 1–3 key words at most, _italic_ rarely. No markdown headings (#), no **double asterisks**, no hashtags, no links unless one is given.",
-    "- At most one or two fitting emojis (💎 ✨), and none when the tone is formal.",
+    "- At most one or two fitting emojis (📱 ✨), and none when the tone is formal.",
     "- Never write placeholders such as [Name], [Client Name], <name>, XXX or ___.",
     "- Output ONLY the message text. No title, no quotation marks around it, no explanation, no \"Here is\".",
     ai.instructions ? `\nExtra instructions from the business:\n${ai.instructions}` : "",
@@ -220,8 +220,8 @@ export async function personalize({ message, contact, language }) {
     "",
     "Rules:",
     "- Keep every fact, offer and call to action of the campaign message. Add no new offers, prices, dates or promises.",
-    "- Make it clearly personal, not just a name swap: greet them by first name, and add or adapt ONE sentence that connects the message to them — their company, their city or market, or their type of business (retailer, wholesaler, bridal…).",
-    "- You may use a harmless preference from the notes (a favourite cut, metal or style). Never mention budgets, payment, credit, our labels for them, or any internal opinion.",
+    "- Make it clearly personal, not just a name swap: greet them by first name, and add or adapt ONE sentence that connects the message to them — their company, their city or market, or their type of business (distributor, dealer, retailer…).",
+    "- You may use a harmless preference from the notes (a favourite model, brand or category). Never mention budgets, payment, credit, our labels for them, or any internal opinion.",
     "- Similar length to the original (within about 20%). Keep the sign-off.",
     "- No {{variables}} and no placeholders in your answer — write the final text.",
     "",
@@ -257,7 +257,7 @@ export async function suggestReply({ messages, contact, language }) {
     "",
     "Rules:",
     "- Answer what the client last asked or said. 1–4 short lines.",
-    "- If they ask for prices, stock, weights or anything not in the business facts, do not invent it: say we will share it shortly, or ask one clarifying question (quantity, carat, metal, budget range).",
+    "- If they ask for prices, stock, weights or anything not in the business facts, do not invent it: say we will share it shortly, or ask one clarifying question (quantity, model, storage variant, budget range).",
     "- Match the client's language if they wrote in another language.",
     "- Never mention our labels for them (VIP, Retailer…), their budget or our private notes.",
     "- A \"yes\" to a catalogue or offer is a request for information, NOT an order. Never thank them for an order, and never say we are preparing, reserving, producing or shipping anything, unless the client has clearly confirmed an order themselves.",
@@ -282,7 +282,7 @@ export async function classifyLead({ messages, contact }) {
     .map((m) => `${m.dir === "in" ? "Client" : "Us"}: ${String(m.text || (m.mediaType ? `[${m.mediaType}]` : "")).slice(0, 400)}`)
     .join("\n");
   const user = [
-    "You sort incoming WhatsApp messages for a B2B diamond jewellery supplier, so the sales team answers the most valuable buyers first.",
+    "You sort incoming WhatsApp messages for a B2B mobile phone and accessories supplier, so the sales team answers the most valuable buyers first.",
     "",
     "The client:",
     describeContact(contact ?? {}),
@@ -297,7 +297,7 @@ export async function classifyLead({ messages, contact }) {
     '- warm: engaged but not asking for anything concrete yet (a general question, "tell me more").',
     "- cold: not interested, not now, asks to be contacted later.",
     "- none: only thanks, ok, a greeting or an emoji — nothing to act on.",
-    '- summary: under 90 characters, in English, what they want in sales terms, with any numbers they gave (e.g. "Price for 20 pcs 1ct+ GIA oval solitaires"). No names.',
+    '- summary: under 90 characters, in English, what they want in sales terms, with any numbers they gave (e.g. "Price for 200 pcs 5G smartphone, 128GB"). No names.',
   ].join("\n");
   const res = await run([{ role: "user", content: user }], { maxTokens: 160, temperature: 0.1 });
   const json = /\{[\s\S]*\}/.exec(res.text)?.[0];
@@ -315,7 +315,7 @@ export async function testAi() {
   const s = getSettings();
   const res = await run([
     { role: "system", content: system(s, s.ai.language) },
-    { role: "user", content: "Write a two-line WhatsApp greeting to a jeweller in Dubai named Ahmed, introducing our business." },
+    { role: "user", content: "Write a two-line WhatsApp greeting to a mobile dealer in Dubai named Ahmed, introducing our business." },
   ], { maxTokens: 300 });
   return { text: cleanOutput(res.text), model: res.model, ms: res.ms };
 }

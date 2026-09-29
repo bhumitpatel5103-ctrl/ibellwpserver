@@ -43,11 +43,11 @@ function emitStatus(entry) {
 
 /* Pretend groups: a few buyer groups, one where only admins may post. */
 const DEMO_GROUPS = [
-  { id: "120363041111111111@g.us", name: "Dubai Diamond Buyers", size: 184, announce: false, iAmAdmin: false, members: ["971501234567", "971552345678", "971561234567", "971509998000", "971585551234", "971523334444"] },
-  { id: "120363042222222222@g.us", name: "HK Jewellery Traders", size: 96, announce: false, iAmAdmin: true, members: ["85291234567", "85298887777", "85261234567", "8613800138000"] },
-  { id: "120363043333333333@g.us", name: "Antwerp Diamond Club — Announcements", size: 412, announce: true, iAmAdmin: false, members: ["32470123456", "972521234567"] },
-  { id: "120363044444444444@g.us", name: "Starlink Jewels · VIP Partners", size: 23, announce: true, iAmAdmin: true, members: ["972521234567", "12125550147", "966501234567", "971501234567"] },
-  { id: "120363045555555555@g.us", name: "Surat Manufacturers Network", size: 257, announce: false, iAmAdmin: false, members: ["919825012345", "919876500001", "919876500002"] },
+  { id: "120363041111111111@g.us", name: "Dubai Mobile Traders", size: 184, announce: false, iAmAdmin: false, members: ["971501234567", "971552345678", "971561234567", "971509998000", "971585551234", "971523334444"] },
+  { id: "120363042222222222@g.us", name: "HK Electronics Traders", size: 96, announce: false, iAmAdmin: true, members: ["85291234567", "85298887777", "85261234567", "8613800138000"] },
+  { id: "120363043333333333@g.us", name: "Europe Mobile Distributors — Announcements", size: 412, announce: true, iAmAdmin: false, members: ["32470123456", "972521234567"] },
+  { id: "120363044444444444@g.us", name: "IBELL MOBILE · VIP Partners", size: 23, announce: true, iAmAdmin: true, members: ["972521234567", "12125550147", "966501234567", "971501234567"] },
+  { id: "120363045555555555@g.us", name: "India Mobile Dealers Network", size: 257, announce: false, iAmAdmin: false, members: ["919825012345", "919876500001", "919876500002"] },
 ];
 
 export async function listGroups() {

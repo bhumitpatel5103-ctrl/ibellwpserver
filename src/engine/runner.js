@@ -565,7 +565,7 @@ export async function sendTest({ message, mediaId, contactId, to, personalizeAi 
   const settings = getSettings();
   const target = String(to || wa.state.phone || "").replace(/\D/g, "");
   if (!target) throw fail("Connect WhatsApp first — the test is sent to your own number", "NOT_CONNECTED", 409);
-  const sample = (contactId && contacts.get(contactId)) || contacts.all()[0] || { name: "Rahul Mehta", company: "Mehta Gems" };
+  const sample = (contactId && contacts.get(contactId)) || contacts.all()[0] || { name: "Rahul Mehta", company: "Mehta Mobiles" };
   // `text` is what the page already showed in its preview (an AI version):
   // the test must be that exact message, not a fresh roll of the dice.
   let text = given?.trim() ? String(given).slice(0, 4000) : renderMessage(message, varsForContact(sample, { business_name: settings.businessName }));

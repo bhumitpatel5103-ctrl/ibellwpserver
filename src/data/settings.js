@@ -8,7 +8,7 @@ import { settingsCol } from "./collections.js";
 import { parseHm } from "../engine/rules.js";
 
 export const DEFAULTS = {
-  businessName: "Starlink Jewels",
+  businessName: "IBELL MOBILE",
   defaultCountry: "IN",
   timezone: "Asia/Kolkata",
   minDelay: 12,
@@ -63,9 +63,9 @@ export const DEFAULTS = {
     tone: "professional",
     language: "English",
     businessProfile:
-      "Starlink Jewels is an India-based manufacturer and exporter of certified natural diamond jewellery " +
-      "(rings, earrings, pendants, bracelets, bridal sets) for jewellers, retailers and wholesalers worldwide. " +
-      "Diamonds are GIA / IGI certified. We offer B2B pricing, custom manufacturing and worldwide insured shipping.",
+      "IBELL MOBILE is an India-based brand of mobile phones and mobile accessories " +
+      "(smartphones, feature phones, tablets, chargers, earphones, power banks and smartwatches) " +
+      "for distributors, dealers and retailers. We offer B2B / dealer pricing and support for our trade partners.",
     instructions: "",
     // Saved here when the admin types it in Settings; never sent back to the
     // browser. SARVAM_API_KEY on the server is used when this is empty.

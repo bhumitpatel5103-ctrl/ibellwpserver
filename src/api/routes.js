@@ -260,7 +260,7 @@ api.post("/render", express.json(), h((req) => {
   if (group) {
     return { text: renderMessage(message, { groupname: group.name, businessname: settings.businessName }), contact: { id: group.id, name: group.name } };
   }
-  const sample = (contactId && contacts.get(contactId)) || contacts.all()[0] || { name: "Rahul Mehta", company: "Mehta Gems", city: "Dubai", country: "AE" };
+  const sample = (contactId && contacts.get(contactId)) || contacts.all()[0] || { name: "Rahul Mehta", company: "Mehta Mobiles", city: "Dubai", country: "AE" };
   return { text: renderMessage(message, varsForContact(sample, { business_name: settings.businessName })), contact: { id: sample.id ?? null, name: sample.name } };
 }));
 

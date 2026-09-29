@@ -68,7 +68,7 @@ function demoTransport(body) {
   let text;
   if (quoted && client) text = quoted.replace(/^(Hello|Hi|Dear)[^,\n]*,/i, `Dear ${client},`);
   else if (quoted) text = quoted;
-  else if (/next reply/i.test(ask)) text = "Thank you for your message. I will share the details with you shortly — could you tell me the quantity and the carat range you are looking for?";
+  else if (/next reply/i.test(ask)) text = "Thank you for your message. I will share the details with you shortly — could you tell me the quantity and the models you are looking for?";
   else {
     const brief = /What to say: (.+)/.exec(ask)?.[1] ?? "our latest collection";
     text = `Dear {{first_name|Sir/Madam}},\n\nWe are pleased to share ${brief.replace(/\.$/, "")} with {{company|your business}}. Our team would be happy to send the full details and B2B prices.\n\nPlease reply to this message and we will get back to you right away.\n\n— {{business_name}}`;
