@@ -128,7 +128,7 @@ one session stop messages being delivered).
 | `DATA_STORE` | no | `local` (default — JSON files in `DATA_DIR`) or `firestore`. **Use `firestore` on Render.** |
 | `DATA_DIR` | no | Folder for local data. Default `./data` (`./data-demo` in demo mode). |
 | `FIREBASE_SERVICE_ACCOUNT_KEY` | yes* | The service-account JSON on one line. *Or* `FIREBASE_SERVICE_ACCOUNT_PATH` pointing at the file (handy locally). |
-| `FIRESTORE_DATABASE_ID` | no | The named database. Default `wpserver`. |
+| `FIRESTORE_DATABASE_ID` | no | The named database. Default `whatsappjenishbhai`. |
 | `WA_SESSION_ID` | no | Which saved WhatsApp session. Default `default`. |
 | `DEMO_MODE` | no | `1` for the pretend WhatsApp and sample data. |
 | `SARVAM_API_KEY` | for AI | Sarvam AI key. Optional: the admin can instead paste a key in Settings → AI writer (saved server-side, never sent to the browser); that one wins. |
@@ -138,7 +138,7 @@ one session stop messages being delivered).
 tests need nothing.
 
 All app collections in Firestore start with `wa` (`waContacts`,
-`waCampaigns`, …) and live in their own database, `wpserver`, separate from the
+`waCampaigns`, …) and live in their own database, `whatsappjenishbhai`, separate from the
 billing app's own database. The prefix is kept anyway, so pointing
 `FIRESTORE_DATABASE_ID` at a shared database can never collide with collections
 such as `settings`.

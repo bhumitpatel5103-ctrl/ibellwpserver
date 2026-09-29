@@ -1,7 +1,7 @@
 import admin from "firebase-admin";
 import { readFileSync } from "node:fs";
 
-// The WhatsApp service has its own named database, "wpserver", in the same
+// The WhatsApp service has its own named database, "whatsappjenishbhai", in the same
 // Firebase project as the billing app but apart from the billing app's own
 // database — the session, clients and campaigns never share a collection
 // with invoices. Nothing here reads the billing data, so the two need not match.
@@ -9,7 +9,7 @@ import { readFileSync } from "node:fs";
 // One codebase serves more than one shop, and each shop is a different named
 // database in a different Firebase project, so this cannot be a constant that
 // only a redeploy can change. Set FIRESTORE_DATABASE_ID on the host.
-export const DATABASE_ID = process.env.FIRESTORE_DATABASE_ID || "wpserver";
+export const DATABASE_ID = process.env.FIRESTORE_DATABASE_ID || "whatsappjenishbhai";
 
 let dbInstance = null;
 let serviceAccountProjectId = null;
